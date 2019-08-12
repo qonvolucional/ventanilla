@@ -1,0 +1,13 @@
+.nav-tabs-custom>.nav-tabs>li>a{
+	padding: 10px 5px!important;
+}
+
+.image{
+	text-align: center!important;
+}
+
+.user-panel>.image>img{
+	max-width: 150px!important;
+	max-height: 150px!important;
+}
+
