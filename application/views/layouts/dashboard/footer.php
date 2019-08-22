@@ -253,6 +253,24 @@
         },
       }
     });
+
+    $('a[data-toggle="tab"]').on('click', function(e){
+        if($(this).parent('li').hasClass('disabled')){
+         return false;
+        }
+        //return false;
+        //e.preventDefault();
+        //e.stopPropagation();
+    });
+    $('#btn-informacion').on('click', function(e){
+      
+      $('.nav-tabs-custom .nav-tabs li.disabled').attr('class','');
+      $('.nav-tabs-custom .nav-tabs').find('li').eq(0).removeClass('active');
+      $('.nav-tabs-custom .nav-tabs').find('li').eq(1).addClass('active');
+
+
+     
+    });
   });
 </script>
 </body>

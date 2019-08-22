@@ -20,20 +20,18 @@
         <div class="col-xs-12">
           <!-- /.box -->
 
-          <div class="box">
+          <div class="box box-success">
             <div class="box-header">
-              <div>
+              <!-- <div>
                 <b style="font-size: 1.1em;">Acciones</b>
               </div>
               <span style="color: skyblue;"><i class="fa fa-circle fa-sm"></i></span>
               <span>Ver Registro
               <span style="color: orange;"><i class="fa fa-circle fa-sm"></i></span>
               <span>Editar Registro
-              <!-- <span style="color: red;"><i class="fa fa-circle fa-sm"></i></span>
+              <span style="color: red;"><i class="fa fa-circle fa-sm"></i></span>
               <span>Eliminar Registro -->
-                   
-                
-              <a href="<?php echo base_url(); ?>emprendimiento/negocioVerde/agregar" class="btn btn-success btn-flat pull-right"><span class="fa fa-plus"></span> Agregar registro</a>
+              <a href="<?php echo base_url(); ?>emprendimiento/negocioVerde/agregar" class="btn btn-primary btn-flat pull-right"><span class="fa fa-plus"></span> Agregar registro</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -41,40 +39,39 @@
                 <thead>
 	                <tr>
 	                  <th>Razón social</th>
-	                  <th>Identificación</th>
-	                  <th>Representante Legal</th>
-	                  <th>Tamaño</th>
-	                  <th>Acciones</th>
+	                  <th>Formato AS</th>
+	                  <th>Hojas de verificación</th>
+	                  <th>Plan de Mejora</th>
+	                  <th>Consolidado</th>
 	                </tr>
                 </thead>
                 <tbody>
                 	<?php if(!empty($empresas)): ?>
                 		<?php foreach ($empresas as $empresa ):?> 
 			                <tr>
-			                  <td><?php echo $empresa->razon_social; ?></td>
-			                  <td><?php echo $empresa->identificacion; ?></td>
-			                  <td><?php echo $empresa->representante_legal; ?></td>
-			                  <td><?php echo $empresa->nombre; ?></td>
 			                  <td>
-			                  	<div class="btn-group">
-			                  	<a href="" class="btn btn-info"><span class="fa fa-eye"></span></a>
-			                  	<a href="" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
-			                  	<!-- <a href="" class="btn btn-danger"><span class="fa fa-remove"></span></a> -->
-			                  	</div>
-			              	  </td>
+                          <?php echo $empresa->razon_social; ?> <a href="<?php base_url(); ?>emprendimiento/negocioVerde/ver/<?php echo $empresa->id; ?>" class="btn btn-info pull-right"><span class="fa fa-eye"></span></a>
+                        </td>
+			                  <td class="btn-centrar">
+                          <a href="<?php base_url(); ?>emprendimiento/negocioVerde/formatoAS/<?php echo $empresa->id; ?>" class="btn btn-warning"><span class="fa fa-check-square"></span></a>
+                        </td>
+                        <td class="btn-centrar">
+                          <div class="btn-group">
+                            <a href="<?php base_url(); ?>emprendimiento/hojaVerificacion1/<?php echo $empresa->id; ?>" class="btn btn-primary "><span class="fa fa-file-text">  Hoja 1</span></a>
+                            <a href="<?php base_url(); ?>emprendimiento/hojaVerificacion2/<?php echo $empresa->id; ?>" class="btn btn-success ">Hoja 2  <span class="fa fa-file-text-o"></span></a>
+                          </div>
+                        </td>
+			                  <td class="btn-centrar">
+                          <a href="<?php base_url(); ?>emprendimiento/planMejora/<?php echo $empresa->id; ?>" class="btn btn-danger"> <span class="fa fa-plus-square"></span>
+                        </td>
+			                  <td class="btn-centrar">
+                          <a href="<?php base_url(); ?>emprendimiento/documento/<?php echo $empresa->id; ?>" class="btn btn-success"> <span class="fa fa-files-o"></span></td>
+                        </td>
 			              	</tr>
 	              		<?php endforeach; ?>
 	              	<?php endif; ?>
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>Razón social</th>
-                  <th>Identificación</th>
-                  <th>Representante Legal</th>
-                  <th>Tamaño</th>
-                  <th>Opciones</th>
-                </tr>
-                </tfoot>
+                
               </table>
             </div>
             <!-- /.box-body -->

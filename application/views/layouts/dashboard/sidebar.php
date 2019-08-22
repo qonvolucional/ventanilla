@@ -20,13 +20,13 @@
         </li>
         <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Gestor de contenido</span></a></li>
         <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Administrar Verificador</span></a></li>
-        <li><a href="<?php echo base_url(); ?>emprendimiento/negocioVerde"><i class="fa fa-book"></i> <span>Negocios Verdes</span></a></li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Formato de Información AS</span></a></li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Hoja de Verificación 1</span></a></li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Hoja de Verifcación 2</span></a></li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Plan de Mejora</span></a></li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Reportes</span></a></li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Administrador de Módulos</span></a></li>
+        <li><a href="<?php echo base_url(); ?>negocioVerde"><i class="fa fa-book"></i> <span>Negocios Verdes</span></a></li>
+        <li><a href="<?php echo base_url(); ?>emprendimiento/negocioVerde/formatoAS"><i class="fa fa-book"></i> <span>Formato de Información AS</span></a></li>
+        <li><a href="<?php echo base_url(); ?>emprendimiento/negocioVerde/hojaVerificacion1"><i class="fa fa-book"></i> <span>Hoja de Verificación 1</span></a></li>
+        <li><a href="h<?php echo base_url(); ?>emprendimiento/negocioVerde/hojaVerificacion2"><i class="fa fa-book"></i> <span>Hoja de Verifcación 2</span></a></li>
+        <li><a href="<?php echo base_url(); ?>emprendimiento/negocioVerde/planMejora"><i class="fa fa-book"></i> <span>Plan de Mejora</span></a></li>
+        <li><a href="<?php echo base_url(); ?>reportes/"><i class="fa fa-book"></i> <span>Reportes</span></a></li>
+        <li><a href="<?php echo base_url(); ?>administradorModulos"><i class="fa fa-book"></i> <span>Administrador de Módulos</span></a></li>
         <li>
           <a href="../widgets.html">
             <i class="fa fa-th"></i> <span>Widgets</span>
@@ -35,8 +35,6 @@
             </span>
           </a>
         </li>
-        
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
         <li class="header">Usuario</li>
         <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Administrar Usuario</span></a></li>
         <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Perfil</span></a></li>

@@ -16,5 +16,12 @@ class Dashboard extends CI_Controller {
 		$this->load->view("dashboard/dashboard");
 		$this->load->view("layouts/dashboard/footer.php");
 	}
+
+	public function perfil(){
+		$this->load->view("layouts/dashboard/header.php");
+		$this->load->view("layouts/dashboard/sidebar.php");
+		$this->load->view("dashboard/perfil");
+		$this->load->view("layouts/dashboard/footer.php");
+	}
 }
 

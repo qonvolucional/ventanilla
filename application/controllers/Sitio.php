@@ -28,7 +28,7 @@ class Sitio extends CI_Controller {
 	{
 		$this->load->view('layouts/sitio/header.php');
 		$this->load->view('layouts/sitio/menu.php');
-		$this->load->view('sitio/inicio');
+		//$this->load->view('sitio/inicio');
 		$this->load->view('layouts/sitio/footer.php');
 	}
 

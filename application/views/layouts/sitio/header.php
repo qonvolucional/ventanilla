@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Ventanilla de Emprendimientos Verdes</title>
-
-  <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/template/img/favicon2.ico" type="image/x-icon">
-  <link rel="icon" href="<?php echo base_url(); ?>assets/template/img/favicon2.ico" type="image/x-icon">
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/template/css/materialize.min.css" media="screen,projection">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/template/css/estilo.css">
-  <link href="https://fonts.googleapis.com/css?family=Merriweather:700i" rel="stylesheet">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/template/css/animations.css" type="text/css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/template/css/w3.css" type="text/css">
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/template/slick/slick.css"/>
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/template/slick/slick-theme.css"/>
-  <link href="https://fonts.googleapis.com/css?family=Londrina+Outline|Sniglet|Nanum+Myeongjo:800" rel="stylesheet">
-  <script src="<?php echo base_url(); ?>assets/template/js/jquery.min.js"  type="text/javascript"></script>
-</head>
-<!-- <script src="js/jquery.min.js"  type="text/javascript"></script> -->
+  <head>
+    <title>Ventanilla de Negocios Verdes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gowala is a Creative Dairy Farm & Eco Product HTML5 Template">
+    <meta name="keywords" content="Gowala, HTML5, Dairy Farm & Eco Product, Template">
+    <meta name="author" content="CodexCoder">
+    
+    <link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre:300,400,500,700,900&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>assets/template/img/favicon2.ico">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/template/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/template/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/template/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/template/css/lightcase.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/template/flaticon/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/template/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/template/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/template/css/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/template/css/style.css">
+  </head>
