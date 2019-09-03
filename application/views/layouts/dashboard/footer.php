@@ -1,9 +1,8 @@
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.13
+      <b>Version</b> 1.0.0
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2014-2019 <a href="#">NegociosVerdes</a>.</strong> Todos los derechos reservados.
   </footer>
 
   <!-- Control Sidebar -->
@@ -227,6 +226,9 @@
 <script src="<?php echo base_url(); ?>assets/template/js/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>assets/template/js/demo.js"></script>
+<?php if(!empty($jquery)): ?>
+  <script src="<?php echo base_url(); ?>assets/template/js/<?php echo $jquery; ?>"></script>
+<?php endif; ?>  
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree();
@@ -252,24 +254,6 @@
           'previous': "Anterior"
         },
       }
-    });
-
-    $('a[data-toggle="tab"]').on('click', function(e){
-        if($(this).parent('li').hasClass('disabled')){
-         return false;
-        }
-        //return false;
-        //e.preventDefault();
-        //e.stopPropagation();
-    });
-    $('#btn-informacion').on('click', function(e){
-      
-      $('.nav-tabs-custom .nav-tabs li.disabled').attr('class','');
-      $('.nav-tabs-custom .nav-tabs').find('li').eq(0).removeClass('active');
-      $('.nav-tabs-custom .nav-tabs').find('li').eq(1).addClass('active');
-
-
-     
     });
   });
 </script>

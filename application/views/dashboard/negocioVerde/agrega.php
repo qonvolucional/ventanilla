@@ -41,100 +41,128 @@
                 <!-- tab-content --> 
                 <div class="tab-content">
                   <div class="tab-pane active" id="tab_1">
-                    <form role="form" method="post" class="info">
+                    <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
+                    <form role="form" method="post" id="almacenarInformacionGeneral" class="form-agregar" enctype="multipart/form-data">
                       <div class="box-header with-border bg-success">
                         <h3 class="box-title text-success">I. INFORMACIÓN GENERAL</h3>
                       </div>
+                      <input type="hidden" name="informacion_as" id="informacion_as" value="si">
+                      <input type="hidden" name="verificacion1" id="verificacion1" value="si">
+                      <input type="hidden" name="verificacion2" id="verificacion2" value="si">
+                      <input type="hidden" name="plan_mejora" id="plan_mejora" value="si">
+                      <input type="hidden" name="fecha_registro" id="fecha_registro">
                       <div class="box-body">
                         <div class="row">
-                          <div class="form-group col col-xs-4">
-                              <label for="tipo_persona">Tipo de Persona</label>
-                              <select id="tipo_persona" name="tipo_persona" class="form-control">
-                                <option selected>Seleccione...</option>
-                                <option value="1">1</option>
+                          <div class="form-group col col-xs-4 <?php echo !empty(form_error('tipo_persona_id')) ? 'has-error': ''; ?>">
+                              <label for="tipo_persona_id">Tipo de Persona</label>
+                              <select id="tipo_persona_id" name="tipo_persona_id" class="form-control">
+                                <option selected value="">Selecciona una opción</option>
+                                <?php if(!empty($tipo_persona)):?>
+                                  <?php foreach($tipo_persona as $tp): ?>
+                                    <option value="<?php echo $tp->id; ?>"><?php echo $tp->nombre; ?></option>
+                                  <?php endforeach;?>  
+                                <?php endif; ?>
                               </select>
+                              <?php echo form_error("tipo_persona_id","<span class='help-block'>","</span>");?>
                           </div>
-                          <div class="form-group col col-xs-4">
-                              <label for="tipo_identificacion">Tipo de Identificación</label>
-                              <select id="tipo_identificacion" name="tipo_identificacion" class="form-control">
-                                <option selected>Seleccione...</option>
-                                <option value="1">1</option>
+                          <div class="form-group col col-xs-4 <?php echo !empty(form_error('tipo_identificacion_id')) ? 'has-error': ''; ?>">
+                              <label for="tipo_identificacion_id">Tipo de Identificación</label>
+                              <select id="tipo_identificacion_id" name="tipo_identificacion_id" class="form-control">
+                                <option selected value="">Selecciona una opción</option>
+                                <?php if(!empty($tipo_identificacion)):?>
+                                  <?php foreach($tipo_identificacion as $ti): ?>
+                                    <option value="<?php echo $ti->id; ?>"><?php echo $ti->nombre; ?></option>
+                                  <?php endforeach;?>  
+                                <?php endif; ?>
                               </select>
+                              <?php echo form_error("tipo_identificacion_id","<span class='help-block'>","</span>");?>
                           </div>
-                          <div class="form-group col col-xs-4">
+                          <div class="form-group col col-xs-4 <?php echo !empty(form_error('identificacion')) ? 'has-error': ''; ?>">
                               <label for="identificacion">Número de Identificación</label>
                               <input type="text" name="identificacion" id="identificacion" class="form-control" placeholder="Identificación">
+                              <?php echo form_error("identificacion","<span class='help-block'>","</span>");?>
                           </div>
                         </div>
 
                         <div class="row">
-                          <div class="form-group col col-xs-12">
+                          <div class="form-group col col-xs-12 <?php echo !empty(form_error('razon_social')) ? 'has-error': ''; ?>">
                             <label for="razon_social">Razón Social</label>
                             <input type="text" class="form-control" name="razon_social" id="razon_social" placeholder="Razón Social">
+                            <?php echo form_error("razon_social","<span class='help-block'>","</span>");?>
                           </div>
                         </div>
-
+                        <input type="hidden" name="rol_id" id="rol_id" class="persona" value="4">
+                        <input type="hidden" name="area_id" id="area_id" class="persona" value="1">
                         <div class="row">
-                          <div class="form-group col col-xs-4">
-                            <label for="representante_legal">Representante Legal</label>
-                            <input type="text" class="form-control" id="representante_legal" name="representante_legal" placeholder="Representante Legal">
+                          <div class="form-group col col-xs-4 <?php echo !empty(form_error('nombre1')) ? 'has-error': ''; ?>">
+                            <label for="nombre1">Representante Legal</label>
+                            <input type="text" class="form-control persona" id="nombre1" name="nombre1" placeholder="Representante Legal">
+                            <?php echo form_error("nombre1","<span class='help-block'>","</span>");?>
                           </div>
-                          <div class="form-group col col-xs-4">
-                            <label for="documento">Documento</label>
-                            <input type="text" class="form-control" id="documento" name="documento" placeholder="Documento">
+                          <div class="form-group col col-xs-4 <?php echo !empty(form_error('identificacion.persona')) ? 'has-error': ''; ?>">
+                            <label for="identificacion2">Documento</label>
+                            <input type="text" class="form-control persona" id="identificacion" name="identificacion" placeholder="Documento">
+                            <?php echo form_error("identificacion.persona","<span class='help-block'>","</span>");?>
                           </div>
                           <div class="form-group col col-xs-4">
                             <label for="correo">Correo</label>
-                            <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo Electrónico">
+                            <input type="email" class="form-control persona" id="correo" name="correo" placeholder="Correo Electrónico">
+                            <?php echo form_error("correo","<span class='help-block'>","</span>");?>
                           </div>
                         </div>
 
                         <div class="row">
                           <div class="form-group col col-xs-4">
-                            <label for="telefono_fijo">Telefono Fijo</label>
-                            <input type="text" class="form-control" id="telefono_fijo" name="telefono_fijo" placeholder="Telefono Fijo">
+                            <label for="fijo">Telefono Fijo</label>
+                            <input type="text" class="form-control persona" id="fijo" name="fijo" placeholder="Telefono Fijo">
                           </div>
                           <div class="form-group col col-xs-4">
                             <label for="celular">Celular</label>
-                            <input type="text" class="form-control" id="celular" name="celular" placeholder="Celular">
+                            <input type="text" class="form-control persona" id="celular" name="celular" placeholder="Celular">
                           </div>
                           <div class="form-group col col-xs-4">
                             <label for="direccion">Dirección</label>
-                            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección de Correspondencia">
+                            <input type="text" class="form-control persona" id="direccion" name="direccion" placeholder="Dirección de Correspondencia">
                           </div>
                         </div>
 
                         <div class="row">
                           <div class="form-group col col-xs-6">
                             <label for="region">Región</label>
-                            <select id="region" name="region" class="form-control">
-                              <option selected>Seleccione...</option>
-                              <option value="1">1</option>
+                            <select id="region" name="region" class="form-control no">
+                              <option selected value="">Selecciona una opción</option>
+                                <?php if(!empty($region)):?>
+                                  <?php foreach($region as $r): ?>
+                                    <option value="<?php echo $r->id; ?>"><?php echo $r->nombre; ?></option>
+                                  <?php endforeach;?>  
+                                <?php endif; ?>
                             </select>
                           </div>
-                          <div class="form-group col col-xs-6">
-                            <label for="autoridad_ambiental">Autoridad Ambiental</label>
-                            <select id="autoridad_ambiental" name="autoridad_ambiental" class="form-control">
-                              <option selected>Seleccione...</option>
+                          <div class="form-group col col-xs-6 <?php echo !empty(form_error('autoridad_ambiental_id')) ? 'has-error': ''; ?>">
+                            <label for="autoridad_ambiental_id">Autoridad Ambiental</label>
+                            <select id="autoridad_ambiental_id" name="autoridad_ambiental_id" class="form-control">
+                              <option selected value="">Seleccione...</option>
                               <option value="1">1</option>
                             </select>
+                            <?php echo form_error("autoridad_ambiental_id","<span class='help-block'>","</span>");?>
                           </div>
                         </div>
 
                         <div class="row">
                           <div class="form-group col col-xs-3">
                             <label for="departamento">Departamento</label>
-                            <select id="departamento" name="departamento" class="form-control">
-                              <option selected>Seleccione...</option>
+                            <select id="departamento" name="departamento" class="form-control no">
+                              <option selected value="">Seleccione...</option>
                               <option value="1">1</option>
                             </select>
                           </div>
-                          <div class="form-group col col-xs-3">
-                            <label for="municipio">Municipio</label>
-                            <select id="municipio" name="municipio" class="form-control">
-                              <option selected>Seleccione...</option>
+                          <div class="form-group col col-xs-3 <?php echo !empty(form_error('municipio_id')) ? 'has-error': ''; ?>">
+                            <label for="municipio_id">Municipio</label>
+                            <select id="municipio_id" name="municipio_id" class="form-control">
+                              <option selected value="">Seleccione...</option>
                               <option value="1">1</option>
                             </select>
+                            <?php echo form_error("municipio_id","<span class='help-block'>","</span>");?>
                           </div>
                           <div class="form-group col col-xs-3">
                             <label for="vereda">Vereda</label>
@@ -171,21 +199,25 @@
                             <input type="number" class="form-control" id="area_predio" name="area_predio" placeholder="Área Tota del Predio">
                           </div>
                           <div class="form-group col col-xs-4">
-                            <label for="unidad_medida_predio">Unidad de medida</label>
-                            <select id="unidad_medida_predio" name="unidad_medida_predio" class="form-control">
-                              <option value="" selected>Seleccione una opción</option>
-                              <option value="1">Ha</option>
-                              <option value="2">Ma2</option>
-                              <option value="3">Fanegadas</option>
-                              <option value="4">Cuadras</option>
+                            <label for="predio_unidad_medida">Unidad de medida</label>
+                            <select id="predio_unidad_medida" name="predio_unidad_medida" class="form-control">
+                              <option selected value="">Selecciona una opción</option>
+                                <?php if(!empty($unidad_medida)):?>
+                                  <?php foreach($unidad_medida as $um): ?>
+                                    <option value="<?php echo $um->id; ?>"><?php echo $um->nombre; ?></option>
+                                  <?php endforeach;?>  
+                                <?php endif; ?>
                             </select>
                           </div>
                           <div class="form-group col col-xs-4">
-                            <label for="pot_municipal">El Predio cumple con el POT Municipio</label>
-                            <select id="pot_municipal" name="pot_municipal" class="form-control">
-                              <option value="" selected>Seleccione</option>
-                              <option value="1">No</option>
-                              <option value="2">Si</option>
+                            <label for="pot_estado">El Predio cumple con el POT Municipio</label>
+                            <select id="pot_estado" name="pot_estado" class="form-control">
+                              <option selected value="">Selecciona una opción</option>
+                                <?php if(!empty($afirmacion)):?>
+                                  <?php foreach($afirmacion as $af): ?>
+                                    <option value="<?php echo $af->id; ?>"><?php echo $af->nombre; ?></option>
+                                  <?php endforeach;?>  
+                                <?php endif; ?>
                             </select>
                           </div>
                         </div>
@@ -194,100 +226,120 @@
                         </blockquote>
                         <div class="row">
                           <div class="form-group col col-xs-3">
-                            <label for="asociacion">Asociación</label>
-                            <select id="asociacion" name="asociacion" class="form-control">
-                              <option selected>Selecciona una opción</option>
-                              <option value="1">SI</option>
-                              <option value="2">NO</option>
+                            <label for="asociacion_estado">Asociación</label>
+                            <select id="asociacion_estado" name="asociacion_estado" class="form-control asociacion">
+                              <option selected value="">Selecciona una opción</option>
+                                <?php if(!empty($afirmacion)):?>
+                                  <?php foreach($afirmacion as $af): ?>
+                                    <option value="<?php echo $af->id; ?>"><?php echo $af->nombre; ?></option>
+                                  <?php endforeach;?>  
+                                <?php endif; ?>
                             </select>
                           </div>
                           <div class="form-group  col col-xs-3">
-                            <label for="numero_asociacion">Número de Asociados</label>
-                            <input type="number" class="form-control" id="numero_asociacion" name="numero_asociacion" placeholder="Número de Asociados">
+                            <label for="numero_asociados">Número de Asociados</label>
+                            <input type="number" class="form-control asociacion" id="numero_asociados" name="numero_asociados" placeholder="Número de Asociados">
                           </div>
                           <div class="form-group col col-xs-3">
-                            <label for="famiempresa">Famiempresa</label>
-                            <select id="famiempresa" name="famiempresa" class="form-control">
-                              <option selected>Seleccione...</option>
-                              <option value="1">1</option>
+                            <label for="famiempresa_estado">Famiempresa</label>
+                            <select id="famiempresa_estado" name="famiempresa_estado" class="form-control asociacion">
+                              <option selected value="">Selecciona una opción</option>
+                                <?php if(!empty($afirmacion)):?>
+                                  <?php foreach($afirmacion as $af): ?>
+                                    <option value="<?php echo $af->id; ?>"><?php echo $af->nombre; ?></option>
+                                  <?php endforeach;?>  
+                                <?php endif; ?>
                             </select>
                           </div>
                           <div class="form-group col col-xs-3">
-                            <label for="tamanio_empresa">Tamaño de Empresa</label>
-                            <select id="tamanio_empresa" name="tamanio_empresa" class="form-control">
-                              <option value="" selected>Seleccione</option>
-                              <option value="1">No</option>
-                              <option value="2">Si</option>
+                            <label for="tamanio_empresa_id">Tamaño de Empresa</label>
+                            <select id="tamanio_empresa_id" name="tamanio_empresa_id" class="form-control asociacion">
+                              <option selected value="">Selecciona una opción</option>
+                                <?php if(!empty($tamanio_empresa)):?>
+                                  <?php foreach($tamanio_empresa as $te): ?>
+                                    <option value="<?php echo $te->id; ?>"><?php echo $te->nombre; ?></option>
+                                  <?php endforeach;?>  
+                                <?php endif; ?>
                             </select>
                           </div>
                         </div>
                       </div>
                       <div class="box-footer">
-                          <a href="#tab_2"  data-toggle="tab" id="btn-informacion" class="btn btn-primary pull-right">Guardar y Continuar</a>
+                        <div class="form-group alert alert-success" role="alert">
+                          <label for="archivo_id">Imagen de empresa</label>
+                          <input type="file" class="form-control-file" name="archivo_id" id="archivo_id">
+                          <small><b>NOTA:</b> <p>Esta imagen será utilizada en caso de que el emprendimiento cumpla con mas del 50% luego de haber aplicado todos los criterios de evaluación para ser visualizada en la pagina principal</p> </small>
+                        </div>
+                      </div>
+                      <div class="box-footer">
+                          <a href="#tab_2" data-toggle="tab" id="btn-informacion" data-form="almacenarInformacionGeneral" class="btn btn-primary pull-right">Guardar y Continuar</a>
                       </div>
                     </form>
                   </div>
                   <!-- /.tab-pane -->
                   <div class="tab-pane" id="tab_2">
-                    <form role="form">
+                    <form role="form" id="descripcionNegocio">
                       <div class="box-header with-border bg-success">
                         <h3 class="box-title center text-success">II. DESCRIPCIÓN DE NEGOCIO VERDE</h3>
                       </div>
+                      <input type="hidden" name="fecha_registro" id="fecha_registro">
                       <div class="box-body">
                         <div class="form-group">
-                            <label for="descripcion bg-info">Descripción del Negocio(Bien o Servicio)</label>
-                            <textarea class="form-control" id="descripcion" name="descripcion" rows="5"></textarea>
+                            <label for="descripcion_negocio bg-info">Descripción del Negocio(Bien o Servicio)</label>
+                            <textarea class="form-control" id="descripcion_negocio" name="descripcion_negocio" rows="5"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="caracteristicas" class="bg-secondary">Características ambientales de su negocio verde(incluir el impacto ambiental positivo generado)</label>
-                            <textarea class="form-control" id="caracteristicas" name="caracteristicas" rows="5"></textarea>
+                            <label for="caracteristica_ambiental" class="bg-secondary">Características ambientales de su negocio verde(incluir el impacto ambiental positivo generado)</label>
+                            <textarea class="form-control" id="caracteristica_ambiental" name="caracteristica_ambiental" rows="5"></textarea>
                         </div>
                       </div>
                       <div class="box-footer">
-                        <a href="#tab_3"  data-toggle="tab" id="btn-descripcion" class="btn btn-primary pull-right">Guardar y Continuar</a>
+                        <a href="#tab_3"  data-toggle="tab" id="btn-descripcion" data-form="descripcionNegocio" class="btn btn-primary pull-right">Guardar y Continuar</a>
                       </div>
                     </form>
                   </div>
                   <!-- /.tab-pane -->
                   <div class="tab-pane" id="tab_3">
-                    <form role="form">
+                    <form role="form" id="categoriaNegocio">
                       <div class="box-header with-border bg-success">
                         <h3 class="box-title center text-success">III. CATEGORÍA DE NEGOCIO VERDE</h3>
                       </div>
                       <div class="box-body">
+                        <input type="hidden" name="empresa_id" id="empresa_id">
                         <div class="row">
                           <div class="form-group col col-xs-4">
-                              <label for="categoria_negocio">Categoría</label>
-                              <select id="categoria_negocio" name="categoria_negocio" class="form-control">
-                                <option selected>Seleccione...</option>
-                                <option value="1">1</option>
+                              <label for="categoria_id">Categoría</label>
+                              <select id="categoria_id" name="categoria_id" class="form-control no">
+                                <option selected value="">Selecciona una opción</option>
+                                <?php if(!empty($categoria)):?>
+                                  <?php foreach($categoria as $c): ?>
+                                    <option value="<?php echo $c->id; ?>"><?php echo $c->nombre; ?></option>
+                                  <?php endforeach;?>  
+                                <?php endif; ?>
                               </select>
                           </div>
                           <div class="form-group col col-xs-4">
-                              <label for="sector">Sector</label>
-                              <select id="sector" name="sector" class="form-control">
-                                <option selected>Seleccione...</option>
-                                <option value="1">1</option>
+                              <label for="sector_id">Sector</label>
+                              <select id="sector_id" name="sector_id" class="form-control no">
+                                <option selected value="">Selecciona una opción</option>
                               </select>
                           </div>
                           <div class="form-group col col-xs-4">
-                              <label for="subsector">Subsector</label>
-                              <select id="subsector" name="subsector" class="form-control">
-                                <option selected>Seleccione...</option>
-                                <option value="1">1</option>
+                              <label for="subsector_id">Subsector</label>
+                              <select id="subsector_id" name="subsector_id" class="form-control">
+                                <option selected value="">Selecciona una opción</option>
                               </select>
                           </div>
                         </div>
                       </div>
                       <div class="box-footer">
-                        <a href="#tab_4"  data-toggle="tab" id="btn-categoria" class="btn btn-primary pull-right">Guardar y Continuar</a>
+                        <a href="#tab_4"  data-toggle="tab" id="btn-categoria" data-form="categoriaNegocio" class="btn btn-primary pull-right">Guardar y Continuar</a>
                         </div>
                     </form>
                   </div>
                   <!-- /.tab-pane -->
-                  <div class="tab-pane" id="tab_4">
-                    
-                    <form role="form">
+                  <div class="tab-pane" id="tab_4">                
+                    <form role="form" id="informacionEmpresa">
                       <div class="box-header with-border bg-success">
                         <h3 class="box-title center text-success">IV. INFORMACIÓN DE EMPRESA</h3>
                       </div>
@@ -297,20 +349,21 @@
                           <small class="text-success"><b>Características de los socios y empleados</b></small>
                         </blockquote>
                         <div class="row border-red">
+                          <input type="hidden" name="empresa_id" id="empresa_id">
                           <div class="col col-md-5">
                               <label for="" class="border">1. Número de socios</label>
                               <div class="row">
                                 <div class="form-group col col-md-4">
                                   <label for="socio_masculino">Másculino</label>
-                                  <input type="number" name="socio_masculino" class="form-control" id="socio_masculino" value="0">
+                                  <input type="number" name="socio_masculino" class="form-control empleado_sexo" id="socio_masculino" value="0" data-cod="1" data-sex="1">
                                 </div>
                                 <div class="form-group col col-md-4">
                                   <label for="socio_femenino">Femenino</label>
-                                  <input type="number" name="socio_femenino" class="form-control" id="socio_femenino" value="0">
+                                  <input type="number" name="socio_femenino" class="form-control empleado_sexo" id="socio_femenino" value="0" data-cod="1" data-sex="2">
                                 </div>
                                 <div class="form-group col col-md-4">
                                   <label for="socio_total">Total</label>
-                                  <input type="number" name="socio_total" class="form-control" id="socio_total" disabled value="0">
+                                  <input type="number" name="socio_total" class="form-control no" id="socio_total" disabled value="0">
                                 </div>
                               </div>
                           </div>
@@ -320,15 +373,15 @@
                               <div class="row">
                                 <div class="form-group col col-md-4">
                                   <label for="vinculado_masculino">Másculino</label>
-                                  <input type="number" name="vinculado_masculino" class="form-control" id="vinculado_masculino" value="0">
+                                  <input type="number" name="vinculado_masculino" class="form-control empleado_sexo" id="vinculado_masculino" value="0" data-cod="2" data-sex="1">
                                 </div>
                                 <div class="form-group col col-md-4">
                                   <label for="vinculado_femenino">Femenino</label>
-                                  <input type="number" name="vinculado_femenino" class="form-control" id="vinculado_femenino" value="0">
+                                  <input type="number" name="vinculado_femenino" class="form-control empleado_sexo" id="vinculado_femenino" value="0" data-cod="2" data-sex="2">
                                 </div>
                                 <div class="form-group col col-md-4">
                                   <label for="vinculado_total">Total</label>
-                                  <input type="number" name="vinculado_total" class="form-control" id="vinculado_total" disabled value="0">
+                                  <input type="number" name="vinculado_total" class="form-control no" id="vinculado_total" disabled value="0">
                                 </div>
                               </div>
                           </div>
@@ -338,15 +391,15 @@
                               <div class="row">
                                 <div class="form-group col col-md-4">
                                   <label for="empleado_masculino">Másculino</label>
-                                  <input type="number" name="empleado_masculino" class="form-control" id="empleado_masculino" value="0">
+                                  <input type="number" name="empleado_masculino" class="form-control empleado_sexo" id="empleado_masculino" value="0" data-cod="3" data-sex="1">
                                 </div>
                                 <div class="form-group col col-md-4">
                                   <label for="empleado_femenino">Femenino</label>
-                                  <input type="number" name="empleado_femenino" class="form-control" id="empleado_femenino" value="0">
+                                  <input type="number" name="empleado_femenino" class="form-control empleado_sexo" id="empleado_femenino" value="0" data-cod="3" data-sex="2">
                                 </div>
                                 <div class="form-group col col-md-4">
                                   <label for="empleado_total">Total</label>
-                                  <input type="number" name="empleado_total" class="form-control" id="empleado_total" disabled value="0">
+                                  <input type="number" name="empleado_total" class="form-control no" id="empleado_total" disabled value="0">
                                 </div>
                               </div>
                           </div>
@@ -360,17 +413,17 @@
                           <div class="col col-md-6">
                               <label for="" class="border">4. Tipo de vinculacion laboral(Indicar Nº de empleos)</label>
                               <div class="row">
-                                <div class="form-group col col-md-3">
+                                <div class="form-group col col-md-4">
                                   <label for="vinculacion_indefinido">Indefinido</label>
-                                  <input type="number" name="vinculacion_indefinido" class="form-control" id="vinculacion_indefinido" value="0">
+                                  <input type="number" name="vinculacion_indefinido" class="form-control vinculacion" id="vinculacion_indefinido" value="0" data-cod="1">
                                 </div>
-                                <div class="form-group col col-md-3">
+                                <div class="form-group col col-md-4">
                                   <label for="vinculacion_definido">Definido</label>
-                                  <input type="number" name="vinculacion_definido" class="form-control" id="vinculacion_definido" value="0">
+                                  <input type="number" name="vinculacion_definido" class="form-control vinculacion" id="vinculacion_definido" value="0" data-cod="2">
                                 </div>
-                                <div class="form-group col col-md-6">
+                                <div class="form-group col col-md-4">
                                   <label for="vinculacion_dias">Por días(Jornales) <small>promedio de días</small></label>
-                                  <input type="number" name="vinculacion_dias" class="form-control" id="vinculacion_dias" value="0">
+                                  <input type="number" name="vinculacion_dias" class="form-control vinculacion" id="vinculacion_dias" value="0" data-cod="3">
                                 </div>
                               </div>
                           </div>
@@ -379,15 +432,15 @@
                               <div class="row">
                                 <div class="form-group col col-md-4">
                                   <label for="edad_rango1">Entre 18-30 años</label>
-                                  <input type="number" name="edad_rango1" class="form-control" id="edad_rango1" value="0">
+                                  <input type="number" name="edad_rango1" class="form-control rango_edad" id="edad_rango1" value="0" data-cod="1">
                                 </div>
                                 <div class="form-group col col-md-4">
                                   <label for="edad_rango2">Entre 30-50 años</label>
-                                  <input type="number" name="edad_rango2" class="form-control" id="edad_rango2" value="0">
+                                  <input type="number" name="edad_rango2" class="form-control rango_edad" id="edad_rango2" value="0" data-cod="2">
                                 </div>
                                 <div class="form-group col col-md-4">
                                   <label for="edad_rango3">Mayores de 50 años</label>
-                                  <input type="number" name="edad_rango3" class="form-control" id="edad_rango3"  value="0">
+                                  <input type="number" name="edad_rango3" class="form-control rango_edad" id="edad_rango3"  value="0" data-cod="3">
                                 </div>
                               </div>
                           </div>
@@ -400,27 +453,27 @@
                               <div class="row">
                                 <div class="form-group col col-md-2">
                                   <label for="educacion_primaria">Primaria</label>
-                                  <input type="number" name="educacion_primaria" class="form-control" id="educacion_primaria" value="0">
+                                  <input type="number" name="educacion_primaria" class="form-control educacion" id="educacion_primaria" value="0" data-cod="1">
                                 </div>
                                 <div class="form-group col col-md-2">
                                   <label for="educacion_bachiller">Bachillerato</label>
-                                  <input type="number" name="educacion_bachiller" class="form-control" id="educacion_bachiller" value="0">
+                                  <input type="number" name="educacion_bachiller" class="form-control educacion" id="educacion_bachiller" value="0" data-cod="2">
                                 </div>
                                 <div class="form-group col col-md-2">
                                   <label for="educacion_tecnica">Técnico</label>
-                                  <input type="number" name="educacion_tecnica" class="form-control" id="educacion_tecnica" value="0">
+                                  <input type="number" name="educacion_tecnica" class="form-control educacion" id="educacion_tecnica" value="0" data-cod="3">
                                 </div>
                                 <div class="form-group col col-md-2">
-                                  <label for="educacon_universitaria">Universitario</label>
-                                  <input type="number" name="educacon_universitaria" class="form-control" id="educacon_universitaria" value="0">
+                                  <label for="educacion_universitaria">Universitario</label>
+                                  <input type="number" name="educacion_universitaria" class="form-control educacion" id="educacion_universitaria" value="0" data-cod="4">
                                 </div>
                                 <div class="form-group col col-md-2">
                                   <label for="educacion_otro">Otro</label>
-                                  <input type="number" name="educacion_otro" class="form-control" id="educacion_otro" value="0">
+                                  <input type="number" name="educacion_otro" class="form-control educacion" id="educacion_otro" value="0" data-cod="5">
                                 </div>
                                 <div class="form-group col col-md-2">
                                   <label for="nivel_educativo_total">Total</label>
-                                  <input type="number" name="nivel_educativo_total" class="form-control" id="nivel_educativo_total" value="0" disabled>
+                                  <input type="number" name="nivel_educativo_total" class="form-control no" id="nivel_educativo_total" value="0" disabled>
                                 </div>
                               </div>
                           </div>
@@ -435,99 +488,120 @@
                               <div class="row">
                                 <div class="form-group col-xs-6">
                                   <label for="comunidad_indigena">Personas de comunidades indigenas</label>
-                                  <select name="comunidad_indigena" id="comunidad_indigena" class="form-control">
-                                    <option value="">Seleccione...</option>
-                                    <option value="0">No</option>
-                                    <option value="1">Si</option>
+                                  <select name="comunidad_indigena" id="comunidad_indigena" class="form-control situacion" data-asociado="cantidad_indigena">
+                                    <option selected value="">Selecciona una opción</option>
+                                    <?php if(!empty($afirmacion)):?>
+                                      <?php foreach($afirmacion as $af): ?>
+                                        <option value="<?php echo $af->id; ?>"><?php echo $af->nombre; ?></option>
+                                      <?php endforeach;?>  
+                                    <?php endif; ?>
                                   </select>
                                 </div>
                                 <div class="form-group col col-xs-6">
                                   <label for="cantidad_indigena">Número de empleados</label>
-                                  <input type="number" name="cantidad_indigena" id="cantidad_indigena" class="form-control" value="0">
+                                  <input disabled type="number" name="cantidad_indigena" id="cantidad_indigena" class="form-control situacion" value="1" data-cod="1">
                                 </div>
                               </div>
                               <div class="row">
                                 <div class="form-group col col-xs-6">
                                   <label for="situacion_discapacidad">Personas en situación de discapacidad</label>
-                                  <select name="situacion_discapacidad" id="situacion_discapacidad" class="form-control">
-                                    <option value="">Seleccione...</option>
-                                    <option value="0">No</option>
-                                    <option value="1">Si</option>
+                                  <select name="situacion_discapacidad" id="situacion_discapacidad" class="form-control situacion" data-asociado="cantidad_discapacidad">
+                                    <option selected value="">Selecciona una opción</option>
+                                    <?php if(!empty($afirmacion)):?>
+                                      <?php foreach($afirmacion as $af): ?>
+                                        <option value="<?php echo $af->id; ?>"><?php echo $af->nombre; ?></option>
+                                      <?php endforeach;?>  
+                                    <?php endif; ?>
                                   </select>
                                 </div>
                                 <div class="form-group col col-xs-6">
                                   <label for="cantidad_discapacidad">Número de empleados</label>
-                                  <input type="number" name="cantidad_discapacidad" id="cantidad_discapacidad" class="form-control" value="0">
+                                  <input disabled type="number" name="cantidad_discapacidad" id="cantidad_discapacidad" class="form-control situacion" value="1" data-cod="2">
                                 </div>
                               </div>
                               <div class="row">
                                 <div class="form-group col col-xs-6">
                                   <label for="adulto_mayor">Adulto mayor</label>
-                                  <select name="adulto_mayor" id="adulto_mayor" class="form-control">
-                                    <option value="">Seleccione...</option>
-                                    <option value="0">No</option>
-                                    <option value="1">Si</option>
+                                  <select name="adulto_mayor" id="adulto_mayor" class="form-control situacion no" data-asociado="cantidad_adulto">
+                                    <option selected value="">Selecciona una opción</option>
+                                    <?php if(!empty($afirmacion)):?>
+                                      <?php foreach($afirmacion as $af): ?>
+                                        <option value="<?php echo $af->id; ?>"><?php echo $af->nombre; ?></option>
+                                      <?php endforeach;?>  
+                                    <?php endif; ?>
                                   </select>
                                 </div>
                                 <div class="form-group col col-xs-6">
                                   <label for="cantidad_adulto">Número de empleados</label>
-                                  <input type="number" name="cantidad_adulto" id="cantidad_adulto" class="form-control" value="0">
+                                  <input disabled type="number" name="cantidad_adulto" id="cantidad_adulto" class="form-control situacion" value="1" data-cod="3">
                                 </div>
                               </div>
                               <div class="row">
                                 <div class="form-group col col-xs-6">
                                   <label for="madres_cabeza">Madres cabeza de hogar</label>
-                                  <select name="madres_cabeza" id="madres_cabeza" class="form-control">
-                                    <option value="">Seleccione...</option>
-                                    <option value="0">No</option>
-                                    <option value="1">Si</option>
+                                  <select name="madres_cabeza" id="madres_cabeza" class="form-control situacion no" data-asociado="cantidad_madre">
+                                    <option selected value="">Selecciona una opción</option>
+                                    <?php if(!empty($afirmacion)):?>
+                                      <?php foreach($afirmacion as $af): ?>
+                                        <option value="<?php echo $af->id; ?>"><?php echo $af->nombre; ?></option>
+                                      <?php endforeach;?>  
+                                    <?php endif; ?>
                                   </select>
                                 </div>
                                 <div class="form-group col col-xs-6">
                                   <label for="cantidad_madre">Número de empleados</label>
-                                  <input type="number" name="cantidad_madre" id="cantidad_madre" class="form-control" value="0">
+                                  <input disabled type="number" name="cantidad_madre" id="cantidad_madre" class="form-control situacion" value="1" data-cod="4">
                                 </div>
                               </div>
                               <div class="row">
                                 <div class="form-group col col-xs-6">
                                   <label for="reinsertado">Reinsertado</label>
-                                  <select name="reinsertado" id="reinsertado" class="form-control">
-                                    <option value="">Seleccione...</option>
-                                    <option value="0">No</option>
-                                    <option value="1">Si</option>
+                                  <select name="reinsertado" id="reinsertado" class="form-control situacion no" data-asociado="cantidad_reinsertado">
+                                    <option selected value="">Selecciona una opción</option>
+                                    <?php if(!empty($afirmacion)):?>
+                                      <?php foreach($afirmacion as $af): ?>
+                                        <option value="<?php echo $af->id; ?>"><?php echo $af->nombre; ?></option>
+                                      <?php endforeach;?>  
+                                    <?php endif; ?>
                                   </select>
                                 </div>
                                 <div class="form-group col col-xs-6">
                                   <label for="cantidad_reinsertado">Número de empleados</label>
-                                  <input type="number" name="cantidad_reinsertado" id="cantidad_reinsertado" class="form-control" value="0">
+                                  <input disabled type="number" name="cantidad_reinsertado" id="cantidad_reinsertado" class="form-control situacion" value="1" data-cod="5">
                                 </div>
                               </div>
                               <div class="row">
                                 <div class="form-group col col-xs-6">
                                   <label for="desplazado">Desplazados</label>
-                                  <select name="desplazado" id="desplazado" class="form-control">
-                                    <option value="">Seleccione...</option>
-                                    <option value="0">No</option>
-                                    <option value="1">Si</option>
+                                  <select name="desplazado" id="desplazado" class="form-control situacion no" data-asociado="cantidad_desplazado">
+                                    <option selected value="">Selecciona una opción</option>
+                                    <?php if(!empty($afirmacion)):?>
+                                      <?php foreach($afirmacion as $af): ?>
+                                        <option value="<?php echo $af->id; ?>"><?php echo $af->nombre; ?></option>
+                                      <?php endforeach;?>  
+                                    <?php endif; ?>
                                   </select>
                                 </div>
                                 <div class="form-group col col-xs-6">
                                   <label for="cantidad_desplazado">Número de empleados</label>
-                                  <input type="number" name="cantidad_desplazado" id="cantidad_desplazado" class="form-control" value="0">
+                                  <input disabled type="number" name="cantidad_desplazado" id="cantidad_desplazado" class="form-control situacion" value="1" data-cod="6">
                                 </div>
                               </div>
                               <div class="row">
                                 <div class="form-group col col-xs-6">
                                   <label for="persona_otro">Otros</label>
-                                  <select name="persona_otro" id="persona_otro" class="form-control">
-                                    <option value="">Seleccione...</option>
-                                    <option value="0">No</option>
-                                    <option value="1">Si</option>
+                                  <select name="persona_otro" id="persona_otro" class="form-control situacion no" data-asociado="cantidad_otro">
+                                    <option selected value="">Selecciona una opción</option>
+                                    <?php if(!empty($afirmacion)):?>
+                                      <?php foreach($afirmacion as $af): ?>
+                                        <option value="<?php echo $af->id; ?>"><?php echo $af->nombre; ?></option>
+                                      <?php endforeach;?>  
+                                    <?php endif; ?>
                                   </select>
                                 </div>
                                 <div class="form-group col col-xs-6">
                                   <label for="cantidad_otro">Número de empleados</label>
-                                  <input type="number" name="cantidad_otro" id="cantidad_otro" class="form-control" value="0">
+                                  <input disabled type="number" name="cantidad_otro" id="cantidad_otro" class="form-control situacion" value="1" data-cod="7">
                                 </div>
                               </div>
                           </div>
@@ -545,17 +619,21 @@
                           <div class="col-md-6">
                             <label for="" class="">1. Actividades realizadas por la empresa</label>
                             <div class="form-check">
-                              <label class="checkbox-inline"><input type="checkbox" name="actividad_empresa[]" id="actividad_empresa[]" class="form-check-input">Producción materia prima</label>
-                              <label class="checkbox-inline"><input type="checkbox" name="actividad_empresa[]" id="actividad_empresa[]" class="form-check-input">Transformación</label>
-                              <label class="checkbox-inline"><input type="checkbox" name="actividad_empresa[]" id="actividad_empresa[]" class="form-check-input">Comercialización</label>
+                              <label class="checkbox-inline"><input type="checkbox" name="actividad_empresa" id="actividad_empresa" class="form-check-input actividad" value="1">Producción materia prima</label>
+                              <label class="checkbox-inline"><input type="checkbox" name="actividad_empresa" id="actividad_empresa" class="form-check-input actividad" value="2">Transformación</label>
+                              <label class="checkbox-inline"><input type="checkbox" name="actividad_empresa" id="actividad_empresa" class="form-check-input actividad" value="3">Comercialización</label>
                             </div>
                           </div>
                           <div class="col col-md-6">
                             <div class="form-group">
                               <label for="etapa_empresarial">2. Etapa empresarial</label>
-                              <select class="form-control">
-                                <option value="">Seleccione...</option>
-                                <option value="1">Opción 1</option>
+                              <select class="form-control" name="etapa_empresarial" id="etapa_empresarial">
+                                <option selected value="">Selecciona una opción</option>
+                                    <?php if(!empty($etapa_empresa)):?>
+                                      <?php foreach($etapa_empresa as $ee): ?>
+                                        <option value="<?php echo $ee->id; ?>"><?php echo $ee->nombre; ?></option>
+                                      <?php endforeach;?>  
+                                    <?php endif; ?>
                               </select>
                             </div>
                           </div>
@@ -570,37 +648,37 @@
                             <div class="form-group row">
                               <label for="bien1" class="col-md-3 control-label">Bien y/o servicio 1</label>
                               <div class="col-md-9">
-                                <input type="text" name="bien1" id="bien1" class="form-control" placeholder="Bien y/0 servicio 1">
+                                <input type="text" name="bien1" id="bien1" class="form-control bien" placeholder="Bien y/0 servicio 1">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="bien2" class="col-md-3 control-label">Bien y/o servicio 2</label>
                               <div class="col-md-9">
-                                <input type="text" name="bien2" id="bien2" class="form-control" placeholder="Bien y/0 servicio 2">
+                                <input type="text" name="bien2" id="bien2" class="form-control bien" placeholder="Bien y/0 servicio 2">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="bien3" class="col-md-3 control-label">Bien y/o servicio 3</label>
                               <div class="col-md-9">
-                                <input type="text" name="bien3" id="bien3" class="form-control" placeholder="Bien y/0 servicio 3">
+                                <input type="text" name="bien3" id="bien3" class="form-control bien" placeholder="Bien y/0 servicio 3">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="bien4" class="col-md-3 control-label">Bien y/o servicio 4</label>
                               <div class="col-md-9">
-                                <input type="text" name="bien4" id="bien4" class="form-control" placeholder="Bien y/0 servicio 4">
+                                <input type="text" name="bien4" id="bien4" class="form-control bien" placeholder="Bien y/0 servicio 4">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="bien5" class="col-md-3 control-label">Bien y/o servicio 5</label>
                               <div class="col-md-9">
-                                <input type="text" name="bien5" id="bien5" class="form-control" placeholder="Bien y/0 servicio 5">
+                                <input type="text" name="bien5" id="bien5" class="form-control bien" placeholder="Bien y/0 servicio 5">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="bien_lider" class="col-md-3 control-label">4. Bien y/o servicio líder <small>(No debe estar dentro de los anteriores bienes)</small></label>
                               <div class="col-md-9">
-                                <input type="text" name="bien_lider" id="bien_lider" class="form-control" placeholder="Bien y/0 servicio líder (No debe estar dentro de los anteriores bienes)">
+                                <input type="text" name="bien_lider" id="bien_lider" class="form-control bien" placeholder="Bien y/0 servicio líder (No debe estar dentro de los anteriores bienes)">
                               </div>
                             </div>
                           </div>
@@ -612,30 +690,36 @@
                               <label for="" class="border">5. Sobre la organización</label>
                               <div class="row">
                                 <div class="form-group col col-xs-6">
-                                  <label for="constitucion_legal">¿Su organización está constituida legalmente (camara de comercio, DIAN)?</label>
-                                  <select name="constitucion_legal" id="constitucion_legal" class="form-control">
-                                    <option value="">Seleccione...</option>
-                                    <option value="0">No</option>
-                                    <option value="1">Si</option>
+                                  <label for="constitucion_legal_estado">¿Su organización está constituida legalmente (camara de comercio, DIAN)?</label>
+                                  <select name="constitucion_legal_estado" id="constitucion_legal_estado" class="form-control organizacion">
+                                    <option selected value="">Selecciona una opción</option>
+                                    <?php if(!empty($afirmacion)):?>
+                                      <?php foreach($afirmacion as $af): ?>
+                                        <option value="<?php echo $af->id; ?>"><?php echo $af->nombre; ?></option>
+                                      <?php endforeach;?>  
+                                    <?php endif; ?>
                                   </select>
                                 </div>
                                 <div class="form-group col col-xs-6">
-                                  <label for="anio_funcionamiento">Años de funcionamiento de la empresa</label>
-                                  <input type="text" name="anio_funcionamiento" id="anio_funcionamiento" class="form-control" placeholder="Años de funcionamiento de la empresa">
+                                  <label for="anio_funcionamiento_registro">Años de funcionamiento de la empresa (en meses)</label>
+                                  <input disabled type="text" name="anio_funcionamiento_registro" id="anio_funcionamiento_registro" class="form-control organizacion" placeholder="Años de funcionamiento de la empresa" value="1">
                                 </div>
                               </div>
                               <div class="row">
                                 <div class="form-group col col-xs-6">
-                                  <label for="operando_actual">¿Su organización se encuentra operando en la actualidad?</label>
-                                  <select name="operando_actual" id="operando_actual" class="form-control">
-                                    <option value="">Seleccione...</option>
-                                    <option value="0">No</option>
-                                    <option value="1">Si</option>
+                                  <label for="operando_actualmente_estado">¿Su organización se encuentra operando en la actualidad?</label>
+                                  <select name="operando_actualmente_estado" id="operando_actualmente_estado" class="form-control organizacion">
+                                    <option selected value="">Selecciona una opción</option>
+                                    <?php if(!empty($afirmacion)):?>
+                                      <?php foreach($afirmacion as $af): ?>
+                                        <option value="<?php echo $af->id; ?>"><?php echo $af->nombre; ?></option>
+                                      <?php endforeach;?>  
+                                    <?php endif; ?>
                                   </select>
                                 </div>
                                 <div class="form-group col col-xs-6">
-                                  <label for="anio_desp_registro">¿Cuantos años de funcionamiento despues de registro ante camara y comercio?</label>
-                                  <input type="text" name="anio_desp_registro" id="anio_desp_registro" class="form-control" placeholder="¿Cuantos años de funcionamiento despues de registro ante camara y comercio?">
+                                  <label for="anio_funcionamiento_empresa">¿Cuantos años de funcionamiento despues de registro ante camara y comercio?</label>
+                                  <input disabled type="text" name="anio_funcionamiento_empresa" id="anio_funcionamiento_empresa" class="form-control organizacion" placeholder="¿Cuantos años de funcionamiento despues de registro ante camara y comercio?" value="1">
                                 </div>
                               </div>
                           </div>
@@ -643,14 +727,13 @@
                         <!-- Fin de row-->
                       </div>
                       <div class="box-footer">
-                        <a href="#tab_5"  data-toggle="tab" id="btn-informacionEmpresa" class="btn btn-primary pull-right">Guardar y Continuar</a>
+                        <a href="#tab_5"  data-toggle="tab" id="btn-informacionEmpresa" data-form="informacionEmpresa" class="btn btn-primary pull-right">Guardar y Continuar</a>
                       </div>
                     </form>
                   </div>
                   <!-- /.tab-pane -->
                   <div class="tab-pane" id="tab_5">
-                    
-                    <form role="form">
+                    <form role="form" id="informacionVerificacion">
                       <div class="box-header bg-success">
                         <h3 class="box-title center text-success">V. INFORMACIÓN DEL VERIFICADOR Y EMPRESARIO</h3>
                       </div>
@@ -660,20 +743,20 @@
                         </blockquote>
                         <div class="row">
                           <div class="form-group col col-xs-3">
-                              <label for="nombre_verificador">Nombre</label>
-                              <input type="text" name="nombre_verificador" id="nombre_verificador" class="form-control" placeholder="Nombre de verificador">
+                              <label for="nombre">Nombre</label>
+                              <input type="text" name="nombre" id="nombre" class="form-control no" placeholder="Nombre de verificador">
                           </div>
                           <div class="form-group col col-xs-3">
-                              <label for="entidad_verificador">Entidad</label>
-                              <input type="text" name="entidad_verificador" id="entidad_verificador" class="form-control" placeholder="Entidad de verificador">
+                              <label for="entidad">Entidad</label>
+                              <input type="text" name="entidad" id="entidad" class="form-control no" placeholder="Entidad de verificador">
                           </div>
                           <div class="form-group col col-xs-3">
-                              <label for="area_verificador">Área</label>
-                              <input type="text" name="area_verificador" id="area_verificador" class="form-control" placeholder="Área de verificador">
+                              <label for="area">Área</label>
+                              <input type="text" name="area" id="area" class="form-control no" placeholder="Área de verificador">
                           </div>
                           <div class="form-group col col-xs-3">
-                              <label for="cargo_verificador">Cargo</label>
-                              <input type="text" name="cargo_verificador" id="cargo_verificador" class="form-control" placeholder="Cargo de verificador">
+                              <label for="cargoo">Cargo</label>
+                              <input type="text" name="cargoo" id="cargoo" class="form-control no" placeholder="Cargo de verificador">
                           </div>
                         </div>
                         <blockquote class="bg-warning">
@@ -681,40 +764,40 @@
                         </blockquote>
                         <div class="row">
                           <div class="form-group col col-xs-4">
-                              <label for="nombre_empresario">Nombre</label>
-                              <input type="text" name="nombre_empresario" id="nombre_empresario" class="form-control" placeholder="Nombre de verificador">
+                              <label for="nombre">Nombre</label>
+                              <input type="text" name="nombre" id="nombre" class="form-control empresario" placeholder="Nombre de Empresario">
                           </div>
                           <div class="form-group col col-xs-4">
-                              <label for="identificacion_empresario">Identificación</label>
-                              <input type="text" name="identificacion_empresario" id="identificacion_empresario" class="form-control" placeholder="Identificación de Empresario">
+                              <label for="identificacion">Identificación</label>
+                              <input type="text" name="identificacion" id="identificacion" class="form-control empresario" placeholder="Identificación de Empresario">
                           </div>
                           <div class="form-group col col-xs-3">
-                              <label for="cargo_empresario">Cargo</label>
-                              <input type="text" name="cargo_empresario" id="cargo_empresario" class="form-control" placeholder="Cargo de Empresario">
+                              <label for="cargo">Cargo</label>
+                              <input type="text" name="cargo" id="cargo" class="form-control empresario" placeholder="Cargo de Empresario">
                           </div>
                         </div>
                         
                       </div>
                       <div class="box-header">
-                        <a href="#tab_6"  data-toggle="tab" id="btn-verificador-empresario" class="btn btn-primary pull-right">Guardar y Continuar</a>
+                        <a href="#tab_6"  data-toggle="tab" data-form="informacionVerificacion" id="btn-verificadorEmpresario" class="btn btn-primary pull-right">Guardar y Continuar</a>
                       </div>
                     </form>
                   </div>
                   <!-- /.tab-pane -->
                   <div class="tab-pane" id="tab_6">
-                    <form role="form">
+                    <form role="form" id="observacionGeneral">
                       <div class="box-header with-border bg-success">
                         <h3 class="box-title center text-success">VI. OBSERVACIONES GENERALES</h3>
                       </div>
                       <div class="box-body">
                         <div class="form-group">
-                            <label for="observaciones_generales">Observaciones Generales</label>
-                            <textarea class="form-control" id="observaciones_generales" name="observaciones_generales" rows="10"></textarea>
+                            <label for="observacion_general">Observaciones Generales</label>
+                            <textarea class="form-control" id="observacion_general" name="observacion_general" rows="10"></textarea>
                         </div>
                         
                       </div>
                       <div class="box-footer">
-                        <a href="<?php echo base_url(); ?>emprendimiento/FormatoInscripcion"  id="btn-observacion" class="btn btn-primary pull-right">Guardar y Finalizar</a>
+                        <a href="#"  id="btn-observacion" class="btn btn-primary pull-right" data-form="observacionGeneral"> Guardar y Finalizar</a>
                       </div>
                     </form>
                   </div>
@@ -725,14 +808,6 @@
               <!-- /.Custom Tabs -->
             </div>
             <!-- /.box-body -->
-            <div class="box-footer">
-              <div class="form-group alert alert-success" role="alert">
-                <label for="image-empresa">Imagen de empresa</label>
-                <input type="file" class="form-control-file" name="image-empresa" id="image-empresa">
-                <small><b>NOTA:</b> <p>Esta imagen será utilizada en caso de que el emprendimiento cumpla con mas del 50% luego de haber aplicado todos los criterios de evaluación para ser visualizada en la pagina principal</p> </small>
-              </div>
-            </div>
-
           </div>
           <!-- /.box -->
         </div>

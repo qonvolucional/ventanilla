@@ -33,7 +33,6 @@ class Auth extends CI_Controller {
 				'nombre' => $resultado->nombre1,
 				'login' => TRUE 
 			);
-
 			$this->session->set_userdata($data);
 			redirect(base_url()."dashboard");
 		}

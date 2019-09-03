@@ -53,19 +53,19 @@
                           <?php echo $empresa->razon_social; ?> <a href="<?php base_url(); ?>emprendimiento/negocioVerde/ver/<?php echo $empresa->id; ?>" class="btn btn-info pull-right"><span class="fa fa-eye"></span></a>
                         </td>
 			                  <td class="btn-centrar">
-                          <a href="<?php base_url(); ?>emprendimiento/negocioVerde/formatoAS/<?php echo $empresa->id; ?>" class="btn btn-warning"><span class="fa fa-check-square"></span></a>
+                          <a href="<?php base_url(); ?>formatoAS/<?php echo $empresa->id; ?>" class="btn btn-warning"><span class="fa fa-check-square"></span></a>
                         </td>
                         <td class="btn-centrar">
                           <div class="btn-group">
-                            <a href="<?php base_url(); ?>emprendimiento/hojaVerificacion1/<?php echo $empresa->id; ?>" class="btn btn-primary "><span class="fa fa-file-text">  Hoja 1</span></a>
-                            <a href="<?php base_url(); ?>emprendimiento/hojaVerificacion2/<?php echo $empresa->id; ?>" class="btn btn-success ">Hoja 2  <span class="fa fa-file-text-o"></span></a>
+                            <a href="<?php base_url(); ?>verificacion-uno/<?php echo $empresa->id; ?>" class="btn btn-primary "><span class="fa fa-file-text">  Hoja 1</span></a>
+                            <a href="<?php base_url(); ?>verificacion-dos/<?php echo $empresa->id; ?>" class="btn btn-success ">Hoja 2  <span class="fa fa-file-text-o"></span></a>
                           </div>
                         </td>
 			                  <td class="btn-centrar">
-                          <a href="<?php base_url(); ?>emprendimiento/planMejora/<?php echo $empresa->id; ?>" class="btn btn-danger"> <span class="fa fa-plus-square"></span>
+                          <a href="<?php base_url(); ?>plan-de-mejora/<?php echo $empresa->id; ?>" class="btn btn-danger"> <span class="fa fa-plus-square"></span>
                         </td>
 			                  <td class="btn-centrar">
-                          <a href="<?php base_url(); ?>emprendimiento/documento/<?php echo $empresa->id; ?>" class="btn btn-success"> <span class="fa fa-files-o"></span></td>
+                          <a href="#" class="btn btn-success"> <span class="fa fa-files-o"></span></td>
                         </td>
 			              	</tr>
 	              		<?php endforeach; ?>
